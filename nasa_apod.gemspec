@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Gabe Dominguez"]
   spec.email         = ["gabe.p.dominguez@gmail.com"]
   spec.summary       = %q{Ruby wrapper for NASA's Astronomy Picture of the Day API}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.description   = %q{A Ruby gem for consuming the NASA Astronomy Picture of the Day API. }
   spec.homepage      = ""
   spec.license       = "MIT"
 
