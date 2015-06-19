@@ -6,9 +6,9 @@ require 'nasa_apod/version'
 Gem::Specification.new do |spec|
   spec.name          = "nasa_apod"
   spec.version       = NasaApod::VERSION
-  spec.authors       = ["Gabe D"]
+  spec.authors       = ["Gabe Dominguez"]
   spec.email         = ["gabe.p.dominguez@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
+  spec.summary       = %q{Ruby wrapper for NASA's Astronomy Picture of the Day API}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
   spec.license       = "MIT"
@@ -20,4 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'httparty'
+  # spec.add_development_dependency 'pry'
+
 end

@@ -1,0 +1,1 @@
+require 'nasa_apod'

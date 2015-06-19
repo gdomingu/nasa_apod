@@ -1,5 +1,7 @@
-require "nasa_apod/version"
+require 'nasa_apod/version'
+# require 'pry'
+require 'httparty'
 
-module NasaApod
-  # Your code goes here...
-end
+require 'nasa_apod/client'
+require 'nasa_apod/search_results'
+require 'nasa_apod/error'
