@@ -1,6 +1,6 @@
 # NasaApod
 
-TODO: Write a gem description
+A Ruby gem for consuming the NASA Astronomy Picture of the Day API. 
 
 ## Installation
 
@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+client = NasaApod::Client.new(api_key: "DEMO_KEY") #DEMO_KEY usage is limited, apply for your own key for open access.
+result = client.search(date: "2015-06-18") #you can also pass in a Ruby Date object. 
+result
+```
 
 ## Contributing
 
