@@ -19,8 +19,8 @@ Or install it yourself as:
 ## Usage
 
 ```
-client = NasaApod::Client.new(api_key: "DEMO_KEY") #DEMO_KEY usage is limited, apply for your own key for open access.
-result = client.search(date: "2015-06-18") #you can also pass in a Ruby Date object. 
+client = NasaApod::Client.new(api_key: "DEMO_KEY") #DEMO_KEY usage is limited.
+result = client.search(date: "2015-06-18") #You can also pass in a Ruby Date object. 
 result
 ```
 
