@@ -18,9 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
+Search by date:
 ```
 client = NasaApod::Client.new(api_key: "DEMO_KEY") #DEMO_KEY usage is limited.
 result = client.search(date: "2015-06-18") #You can also pass in a Ruby Date object. 
+result
+```
+
+Random post:
+```
+result = client.wormhole #can optionally pass in list_concepts: true for concept tags.
 result
 ```
 

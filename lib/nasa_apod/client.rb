@@ -40,6 +40,13 @@ module NasaApod
       handle_response(response)
     end
 
+    def random_post(options={})
+      date = rand(Date.parse("1995-06-16")..Date.today)
+      search(:date => date)
+    end
+
+    alias_method :wormhole, :random_post
+
     private
 
     def handle_response(response)

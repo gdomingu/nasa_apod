@@ -36,6 +36,16 @@ module NasaApod
       end
     end
 
+    describe '#random_post' do
+      let(:client) { Client.new }
+
+      it 'returns a random post within apod range' do
+        results = client.random_post 
+        expect(results.class).to eq(NasaApod::SearchResults)
+        expect(Date.parse(client.date)).to be_between(Date.parse("1995-06-16"),Date.today)
+      end
+    end
+
   end
 
   describe SearchResults do
