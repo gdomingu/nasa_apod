@@ -1,7 +1,9 @@
 module NasaApod
- 
+
+  require 'addressable/uri'
+
   DEFAULT_URL = 'https://api.nasa.gov/planetary/apod'
-  
+
   class Client
     attr_reader :api_key, :date, :list_concepts
 
@@ -16,7 +18,7 @@ module NasaApod
         @list_concepts = list_concepts
       end
     end
-    
+
     def initialize(options={})
       @api_key = options[:api_key] || "DEMO_KEY"
       self.date = options[:date]
@@ -36,7 +38,7 @@ module NasaApod
     def search(options={})
       self.date = options[:date] || date
       @list_concepts = options[:list_concepts] || list_concepts
-      response = HTTParty.get("https://api.nasa.gov/planetary/apod?api_key=#{api_key}&date=#{date}&concept_tags=#{list_concepts}")
+      response = HTTParty.get(requestUrl())
       handle_response(response)
     end
 
@@ -57,11 +59,22 @@ module NasaApod
       end
     end
 
+    def requestUrl()
+      uri = Addressable::URI.new
+      uri.query_values = {
+        api_key: api_key,
+        date: date,
+        concept_tags: list_concepts
+      }
+
+      DEFAULT_URL + '?' + uri.query
+    end
+
     def write_attrs(attributes)
       @concepts = attributes["concepts"]
       @url = attributes["url"]
       @media_type = attributes["media_type"]
-      @explanation = attributes["explanation"] 
+      @explanation = attributes["explanation"]
       @title = attributes["title"]
     end
 
@@ -77,5 +90,5 @@ module NasaApod
       end
     end
   end
-  
+
 end
