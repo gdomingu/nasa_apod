@@ -1,7 +1,5 @@
 module NasaApod
 
-  require 'addressable/uri'
-
   DEFAULT_URL = 'https://api.nasa.gov/planetary/apod'
 
   class Client
@@ -60,14 +58,13 @@ module NasaApod
     end
 
     def requestUrl()
-      uri = Addressable::URI.new
-      uri.query_values = {
+      uri = URI(DEFAULT_URL)
+      uri.query = URI.encode_www_form(
         api_key: api_key,
         date: date,
         concept_tags: list_concepts
-      }
-
-      DEFAULT_URL + '?' + uri.query
+      )
+      uri
     end
 
     def write_attrs(attributes)
