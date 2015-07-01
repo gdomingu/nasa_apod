@@ -25,9 +25,23 @@ result = client.search(date: "2015-06-18") #You can also pass in a Ruby Date obj
 result
 ```
 
+Get concept tags with result
+```
+result = client.search(list_concepts: true) 
+result.concepts #=> ["Sun","Sunspot","Light",...],
+```
+Note: Not all posts have concept tags.
+
+Get HD image URL:
+
+```
+result = client.search(hd: true) 
+result.hd_url #=> "http://apod.nasa.gov/apod/image/1506/CeresMountain_Dawn_1041.jpg"
+```
+
 Random post:
 ```
-result = client.wormhole #can optionally pass in list_concepts: true for concept tags.
+result = client.wormhole
 result
 ```
 

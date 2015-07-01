@@ -34,6 +34,11 @@ module NasaApod
         todays_title = results.title
         expect(yesterdays_title).to_not eq(todays_title)
       end
+
+      it 'returns a HD image with params' do
+        results = client.search(:hd => true)
+        expect(results.hd_url).to_not  be(nil)
+      end
     end
 
     describe '#random_post' do
