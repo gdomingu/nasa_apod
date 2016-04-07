@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', "~> 3.3"
   spec.add_development_dependency 'httparty', "~> 0.13"
 
-  spec.add_runtime_dependency 'httparty', "~> 0.13"
+  spec.add_dependency 'httparty', "~> 0.13"
 end
