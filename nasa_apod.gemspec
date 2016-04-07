@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["gabe.p.dominguez@gmail.com"]
   spec.summary       = %q{Ruby wrapper for NASA's Astronomy Picture of the Day API}
   spec.description   = %q{A Ruby gem for consuming the NASA Astronomy Picture of the Day API. }
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/gdomingu/nasa_apod"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'httparty'
+  spec.add_development_dependency "rake", "~> 10.1"
+  spec.add_development_dependency 'rspec', "~> 3.3"
+  spec.add_development_dependency 'httparty', "~> 0.13"
 end
