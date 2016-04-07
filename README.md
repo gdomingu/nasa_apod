@@ -25,12 +25,33 @@ result = client.search(date: "2015-06-18") #You can also pass in a Ruby Date obj
 result
 ```
 
+Get title:
+
+```
+result = client.search
+result.title #=> "M64: The Black Eye Galaxy"
+```
+
+Get explanation:
+
+```
+result = client.search
+result.explanation #=> "This big, bright, beautiful spiral galaxy is Messier 64..."
+```
+
 Get concept tags with result
 ```
 result = client.search(concept_tags: true) 
 result.concepts #=> ["Sun","Sunspot","Light",...],
 ```
 Note: Not all posts have concept tags.
+
+Get image URL:
+
+```
+result = client.search
+result.url #=> "http://apod.nasa.gov/apod/image/1506/CeresMountain_Dawn_1041.jpg"
+```
 
 Get HD image URL:
 
