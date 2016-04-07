@@ -10,8 +10,8 @@ module NasaApod
         expect(client.api_key).to eq("DEMO_KEY")
       end
 
-      it 'list_concepts defaults to false' do
-        expect(client.list_concepts).to eq(false)
+      it 'concept_tags defaults to false' do
+        expect(client.concept_tags).to eq(false)
       end
 
       it 'date defaults to a string of today' do
@@ -48,6 +48,16 @@ module NasaApod
         results = client.random_post 
         expect(results.class).to eq(NasaApod::SearchResults)
         expect(Date.parse(client.date)).to be_between(Date.parse("1995-06-16"),Date.today)
+      end
+    end
+
+    describe '#attributes' do
+      let(:client) { Client.new }
+
+      it 'returns a hash of attributes' do
+        attributes = client.attributes 
+        expect(attributes.class).to eq(Hash)
+        expect(attributes['api_key']).to eq('DEMO_KEY')
       end
     end
 

@@ -27,7 +27,7 @@ result
 
 Get concept tags with result
 ```
-result = client.search(list_concepts: true) 
+result = client.search(concept_tags: true) 
 result.concepts #=> ["Sun","Sunspot","Light",...],
 ```
 Note: Not all posts have concept tags.
