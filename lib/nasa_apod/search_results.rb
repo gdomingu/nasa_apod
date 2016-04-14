@@ -1,7 +1,7 @@
 module NasaApod
  
   class SearchResults
-    attr_accessor :concepts, :url, :media_type, :title, :explanation, :hd_url
+    attr_accessor :concepts, :url, :media_type, :title, :explanation, :hd_url, :date
 
     def initialize(attributes={})
       @concepts = attributes["concepts"]
@@ -10,6 +10,7 @@ module NasaApod
       @explanation = attributes["explanation"] 
       @title = attributes["title"]
       @hd_url = attributes["hdurl"]
+      @date = attributes["date"]
     end
   end
   

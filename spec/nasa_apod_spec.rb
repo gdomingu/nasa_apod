@@ -27,6 +27,11 @@ module NasaApod
         expect(results.class).to eq(NasaApod::SearchResults)
       end
 
+      it 'returns a date' do
+        results = client.search(:date => Date.today.prev_day)
+        expect(results.date).to eq(Date.today.prev_day.to_s)
+      end
+
       it 'changes picture when date changes' do
         results = client.search(:date => Date.today.prev_day)
         yesterdays_title = results.title
@@ -60,17 +65,18 @@ module NasaApod
         expect(attributes['api_key']).to eq('DEMO_KEY')
       end
     end
-
   end
 
   describe SearchResults do
     describe '#initialize' do
       let(:result) { SearchResults.new(attributes) }
-      let(:attributes) {{"url" =>  "test_url", 
-                        "concepts" =>  ["test_concept1","test_concept2"], 
-                        "media_type" =>  "JPG", 
-                        "title" =>  "Test title", 
-                        "explanation" => "Test explanation"}}
+      let(:attributes) {{"url" =>  "test_url",
+                        "concepts" =>  ["test_concept1","test_concept2"],
+                        "media_type" =>  "JPG",
+                        "title" =>  "Test title",
+                        "explanation" => "Test explanation",
+                        "date" => "1995-06-16"
+                        }}
 
       it 'assigns all attributes properly' do
         attributes.keys.each do |attr|
@@ -90,7 +96,4 @@ module NasaApod
       end
     end
   end
-
-
-
 end

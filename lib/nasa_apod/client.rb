@@ -66,6 +66,7 @@ module NasaApod
     private
 
     def handle_response(response)
+      response["date"] = self.date
       if response["error"].nil?
         NasaApod::SearchResults.new(response)
       else
