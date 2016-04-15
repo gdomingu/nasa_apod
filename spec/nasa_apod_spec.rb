@@ -32,6 +32,11 @@ module NasaApod
         expect(results.date).to eq(Date.today.prev_day.to_s)
       end
 
+      it 'returns copyright' do
+        results = client.search(:date => Date.today.prev_day)
+        expect(results.copyright).to_not be(nil)
+      end
+
       it 'changes picture when date changes' do
         results = client.search(:date => Date.today.prev_day)
         yesterdays_title = results.title
