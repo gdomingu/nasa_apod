@@ -39,13 +39,6 @@ result = client.search
 result.explanation #=> "This big, bright, beautiful spiral galaxy is Messier 64..."
 ```
 
-Get concept tags with result
-```
-result = client.search(concept_tags: true) 
-result.concepts #=> ["Sun","Sunspot","Light",...],
-```
-Note: Not all posts have concept tags.
-
 Get image URL:
 
 ```

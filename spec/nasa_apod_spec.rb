@@ -10,10 +10,6 @@ module NasaApod
         expect(client.api_key).to eq("DEMO_KEY")
       end
 
-      it 'concept_tags defaults to false' do
-        expect(client.concept_tags).to eq(false)
-      end
-
       it 'date defaults to a string of today' do
         expect(client.date).to eq(Date.today.to_s)
       end
@@ -76,7 +72,6 @@ module NasaApod
     describe '#initialize' do
       let(:result) { SearchResults.new(attributes) }
       let(:attributes) {{"url" =>  "test_url",
-                        "concepts" =>  ["test_concept1","test_concept2"],
                         "media_type" =>  "JPG",
                         "title" =>  "Test title",
                         "explanation" => "Test explanation",
