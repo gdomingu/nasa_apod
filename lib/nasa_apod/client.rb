@@ -1,24 +1,16 @@
 module NasaApod
-
   DEFAULT_URL = 'https://api.nasa.gov/planetary/apod'
 
   class Client
-    attr_reader :api_key, :date, :hd
+    attr_reader :date
+    attr_accessor :hd, :api_key
 
     def date=(date)
       @date = parse_date(date)
     end
 
-    def hd=(hd)
-      @hd = if hd.nil? || hd.blank?
-              false
-            else
-              hd
-            end
-    end
-
     def initialize(options = {})
-      @api_key = options[:api_key] || 'DEMO_KEY'
+      self.api_key = options[:api_key] || 'DEMO_KEY'
       self.date = options[:date]
       self.hd = options[:hd]
     end
@@ -35,7 +27,7 @@ module NasaApod
     # @return [NasaApod::SearchResults] Return APOD post for a specified date.
     def search(options = {})
       self.date = options[:date] || date
-      @hd = options[:hd] || hd
+      self.hd = options[:hd] || hd
       response = HTTParty.get(DEFAULT_URL, query: attributes)
       handle_response(response)
     end
