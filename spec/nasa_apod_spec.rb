@@ -76,8 +76,8 @@ module NasaApod
       end
     end
 
-    context 'when media_type is video' do
-      describe "#video_thumbnail_url" do
+    describe "#thumbnail_url" do
+      context 'when media_type is video' do
         let(:result) { SearchResults.new(attributes) }
         let(:attributes) {{"url" =>  "https://www.youtube.com/embed/3LdZ_NftIh8?rel=0",
                         "media_type" =>  "video",
@@ -87,7 +87,20 @@ module NasaApod
                         }}
 
         it 'returns a image url' do
-          expect(result.video_thumbnail_url).to eq('http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg')
+          expect(result.thumbnail_url).to eq('http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg')
+        end
+      end
+      context 'when media_type is image' do
+        let(:result) { SearchResults.new(attributes) }
+        let(:attributes) {{"url" =>  "http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg",
+                        "media_type" =>  "image",
+                        "title" =>  "Test title",
+                        "explanation" => "Test explanation",
+                        "date" => "1995-06-16"
+                        }}
+
+        it 'returns a image url' do
+          expect(result.thumbnail_url).to eq('http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg')
         end
       end
     end

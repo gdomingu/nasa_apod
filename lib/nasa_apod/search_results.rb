@@ -2,7 +2,7 @@ module NasaApod
  
   class SearchResults
     attr_accessor :url, :media_type, :title, :explanation, :hd_url, :date, :copyright
-    attr_reader :video_thumbnail_url
+    attr_reader :thumbnail_url
 
     def initialize(attributes={})
       @url = attributes["url"]
@@ -14,9 +14,11 @@ module NasaApod
       @copyright = attributes["copyright"]
     end
 
-    def video_thumbnail_url
+    def thumbnail_url
       if @media_type == 'video'
         "http://img.youtube.com/vi/#{youtube_id}/sddefault.jpg"
+      else
+        url
       end
     end
 
