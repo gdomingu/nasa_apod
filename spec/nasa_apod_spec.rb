@@ -42,7 +42,7 @@ module NasaApod
       end
 
       it 'returns a HD image with params' do
-        results = client.search(:hd => true)
+        results = client.search(:date => Date.parse("2016-05-08"), :hd => true)
         expect(results.hd_url).to_not  be(nil)
       end
     end
@@ -57,15 +57,6 @@ module NasaApod
       end
     end
 
-    describe '#attributes' do
-      let(:client) { Client.new }
-
-      it 'returns a hash of attributes' do
-        attributes = client.attributes 
-        expect(attributes.class).to eq(Hash)
-        expect(attributes['api_key']).to eq('DEMO_KEY')
-      end
-    end
   end
 
   describe SearchResults do
@@ -81,6 +72,22 @@ module NasaApod
       it 'assigns all attributes properly' do
         attributes.keys.each do |attr|
           expect(result.send(attr)).to eq(attributes[attr])
+        end
+      end
+    end
+
+    context 'when media_type is video' do
+      describe "#video_thumbnail_url" do
+        let(:result) { SearchResults.new(attributes) }
+        let(:attributes) {{"url" =>  "https://www.youtube.com/embed/3LdZ_NftIh8?rel=0",
+                        "media_type" =>  "video",
+                        "title" =>  "Test title",
+                        "explanation" => "Test explanation",
+                        "date" => "1995-06-16"
+                        }}
+
+        it 'returns a image url' do
+          expect(result.video_thumbnail_url).to eq('http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg')
         end
       end
     end

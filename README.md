@@ -46,6 +46,15 @@ result = client.search
 result.url #=> "http://apod.nasa.gov/apod/image/1506/CeresMountain_Dawn_1041.jpg"
 ```
 
+Note: Sometimes result.url will return a video url. You should build logic to handle both media_type: 'image' and media_type: 'video'.
+
+If the media_type: 'video', you can use video_thumbnail_url to get a jpg thumbnail of the video.
+
+```
+result = client.search
+result.video_thumbnail_url #=> 'http://img.youtube.com/vi/3LdZ_NftIh8/sddefault.jpg' 
+```
+
 Get HD image URL:
 
 ```
